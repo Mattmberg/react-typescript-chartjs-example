@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Chart from "chart.js/auto";
+import { CategoryScale } from 'chart.js';
+import { useState } from 'react';
+import { Data } from './Data';
+import { Bar, Line, Pie, Doughnut, PolarArea, Radar, Scatter, Bubble } from "react-chartjs-2";
 
-function App() {
+Chart.register(CategoryScale);
+
+export default function App() {
+  const [chartData, setChartData] = useState({
+    labels: Data.map((data) => data.number),
+    datasets: [
+      {
+        label: "Numbers Gained ",
+        data: Data.map((data) => data.added),
+        backgroundColor: [
+          "red",
+          "blue",
+          "green",
+          "yellow"
+        ],
+        borderColor: "",
+        borderWidth: 1
+      }
+    ]
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Pie data={chartData}/>
+      <Line data={chartData}/>
+      <Bar data={chartData}/>
     </div>
   );
 }
-
-export default App;
