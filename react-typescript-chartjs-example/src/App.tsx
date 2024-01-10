@@ -30,6 +30,11 @@ export default function App() {
       <Pie data={chartData}/>
       <Line data={chartData}/>
       <Bar data={chartData}/>
+      <Doughnut data={chartData}/>
+      <PolarArea data={chartData}/>
+      <Radar data={chartData}/>
+      <Scatter data={chartData}/>
+      <Bubble data={chartData}/>
     </div>
   );
 }
